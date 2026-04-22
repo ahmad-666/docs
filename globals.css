@@ -1,3 +1,21 @@
 /* #content-container {
   background-color: white;
 } */
+
+a {
+  text-decoration: none;
+  border-bottom: none !important;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+li::before {
+  display: none;
+}
+
+span[data-as="p"] {
+  display: inline-block;
+}
