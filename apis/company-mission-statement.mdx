@@ -2,3 +2,141 @@
 title: Company Mission Statement API
 description: Personalized outreach converts better when messaging aligns with a prospect's stated values and strategic direction. The Company Mission Statement API extracts verified mission statements from any company domain across CUFinder's 85M+ company database, returning full mission text with source URLs and extraction confidence scores that validate statement authenticity. Built for sales engagement platforms, personalization engines, and account research tools, this RESTful endpoint delivers mission statement data—including vision statements, core values, and purpose declarations—that power contextual email writing, pitch deck customization, and strategic account planning workflows across your customer acquisition systems.
 ---
+
+import { SDKsList } from "/snippets/SDKsList.jsx";
+import { StatusCodes } from "/snippets/StatusCodes.jsx";
+import { Button } from "/snippets/Button.jsx";
+import { ReadMore } from "/snippets/ReadMore.jsx";
+
+<SDKsList />
+
+<div className="my-20">
+    ## APIS
+</div>
+
+<StatusCodes className="mt-20" />
+
+<div className="mt-20">
+    ## Company Name to Domain API Typescript SDK
+    <CodeGroup>
+        ```typescript Request
+        import { Cufinder } from '@cufinder/cufinder-ts';
+
+        // Initialize the client
+        const client = new Cufinder('your-api-key-here');
+
+        // Initialize with more options
+        const client = new Cufinder('your-api-key-here', { timeout: 60000 });
+
+        const result = await client.cuf('cufinder', 'US');
+        console.log(result)
+        ```
+    </CodeGroup>
+</div>
+
+<div className="mt-12">
+    ## Company Name to Domain API Python SDK
+    <CodeGroup>
+        ```python Request
+        from cufinder import Cufinder
+
+        # Initialize the client
+        client = Cufinder('your-api-key-here')
+
+        # Initialize with more options
+        client = Cufinder('your-api-key-here', timeout=60)
+
+        result = client.cuf('cufinder', 'US')
+        print(result)
+        ```
+    </CodeGroup>
+</div>
+<div className="mt-12">
+    ## Company Name to Domain API Go SDK
+    <CodeGroup>
+        ```go Request
+       package main
+
+        import (
+            "fmt"
+            "log"
+            "github.com/cufinder/cufinder-go"
+        )
+
+        func main() {
+            // Initialize the client
+            sdk := cufinder.NewSDK("your-api-key-here")
+            
+            // Initialize with more options
+            sdk := cufinder.NewSDKWithConfig(cufinder.ClientConfig{
+                APIKey:     "your-api-key-here",
+                BaseURL:    "https://api.cufinder.io/v2",
+                Timeout:    60 * time.Second,
+                MaxRetries: 3,
+            })
+        }
+
+        result, err := sdk.CUF("cufinder", "US")
+        if err != nil {
+            log.Fatal(err)
+        }
+        fmt.Println(result)
+        ```
+    </CodeGroup>
+</div>
+
+<div className="mt-12">
+    ## Company Name to Domain API Ruby SDK
+    <CodeGroup>
+        ```ruby Request
+        require 'cufinder_ruby'
+
+        # Initialize the client
+        client = Cufinder::Client.new(api_key: 'your-api-key-here')
+
+        # Initialize with more options
+        client = Cufinder::Client.new(
+            api_key: 'your-api-key-here',
+            timeout: 60,
+            max_retries: 3
+        )
+
+        result = client.cuf(company_name: 'cufinder', country_code: 'US')
+        puts result
+        ```
+    </CodeGroup>
+</div>
+
+<div className="mt-12">
+    ## Company Name to Domain API Rust SDK
+    <CodeGroup>
+        ```rust Request
+        use cufinder_rust::CufinderSDK;
+
+        #[tokio::main]
+        async fn main() -> Result<(), Box<dyn std::error::Error>> {
+            // Initialize the client
+            let sdk = CufinderSDK::new("your-api-key-here".to_string())?;
+            
+            // Initialize with more options
+            let sdk = CufinderSDK::with_config(ClientConfig {
+                api_key: "your-api-key-here".to_string(),
+                base_url: "https://api.cufinder.io/v2".to_string(),
+                timeout: Duration::from_secs(60),
+                max_retries: 3,
+            })?;
+            
+            Ok(())
+        }
+
+        let result = sdk.cuf("cufinder", "US").await?;
+        println!("{:?}", result);
+        ```
+    </CodeGroup>
+</div>
+
+<div className="mt-20">
+  <ReadMore link="https://cufinder.io/apis/company-name-to-domain-api">
+    Company Name to Domain API
+  </ReadMore>
+</div>
