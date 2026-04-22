@@ -17,7 +17,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 <StatusCodes className="mt-20" />
 
 <div className="mt-20">
-    ## Company Name to Domain API Typescript SDK
+    ## Company Lookalikes Finder API Typescript SDK
     <CodeGroup>
         ```typescript Request
         import { Cufinder } from '@cufinder/cufinder-ts';
@@ -28,17 +28,17 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
         // Initialize with more options
         const client = new Cufinder('your-api-key-here', { timeout: 60000 });
 
-        const result = await client.cuf('cufinder', 'US');
-        console.log(result)
+        const result = await client.fcl('apple');
+        console.log(result);
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Python SDK
+    ## Company Lookalikes Finder API Python SDK
     <CodeGroup>
         ```python Request
-        from cufinder import Cufinder
+       from cufinder import Cufinder
 
         # Initialize the client
         client = Cufinder('your-api-key-here')
@@ -46,20 +46,21 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
         # Initialize with more options
         client = Cufinder('your-api-key-here', timeout=60)
 
-        result = client.cuf('cufinder', 'US')
+        result = client.fcl('apple')
         print(result)
         ```
     </CodeGroup>
 </div>
 <div className="mt-12">
-    ## Company Name to Domain API Go SDK
+    ## Company Lookalikes Finder API Go SDK
     <CodeGroup>
         ```go Request
-       package main
+        package main
 
         import (
             "fmt"
             "log"
+            
             "github.com/cufinder/cufinder-go"
         )
 
@@ -75,8 +76,8 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
                 MaxRetries: 3,
             })
         }
-
-        result, err := sdk.CUF("cufinder", "US")
+        
+        result, err := sdk.FCL("apple")
         if err != nil {
             log.Fatal(err)
         }
@@ -86,7 +87,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Ruby SDK
+    ## Company Lookalikes Finder API Ruby SDK
     <CodeGroup>
         ```ruby Request
         require 'cufinder_ruby'
@@ -100,15 +101,15 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             timeout: 60,
             max_retries: 3
         )
-
-        result = client.cuf(company_name: 'cufinder', country_code: 'US')
+        
+        result = client.fcl(query: 'apple')
         puts result
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Rust SDK
+    ## Company Lookalikes Finder API Rust SDK
     <CodeGroup>
         ```rust Request
         use cufinder_rust::CufinderSDK;
@@ -128,15 +129,15 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             
             Ok(())
         }
-
-        let result = sdk.cuf("cufinder", "US").await?;
+        
+        let result = sdk.fcl("apple").await?;
         println!("{:?}", result);
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-20">
-  <ReadMore link="https://cufinder.io/apis/company-name-to-domain-api">
-    Company Name to Domain API
+  <ReadMore link="https://cufinder.io/apis/company-lookalikes-finder-api">
+    Company Lookalikes Finder API
   </ReadMore>
 </div>

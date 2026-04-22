@@ -17,7 +17,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 <StatusCodes className="mt-20" />
 
 <div className="mt-20">
-    ## Company Name to Domain API Typescript SDK
+    ## Company Phone Finder API Typescript SDK
     <CodeGroup>
         ```typescript Request
         import { Cufinder } from '@cufinder/cufinder-ts';
@@ -28,14 +28,14 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
         // Initialize with more options
         const client = new Cufinder('your-api-key-here', { timeout: 60000 });
 
-        const result = await client.cuf('cufinder', 'US');
-        console.log(result)
+        const result = await client.ntp('apple');
+        console.log(result);
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Python SDK
+    ## Company Phone Finder API Python SDK
     <CodeGroup>
         ```python Request
         from cufinder import Cufinder
@@ -45,14 +45,14 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 
         # Initialize with more options
         client = Cufinder('your-api-key-here', timeout=60)
-
-        result = client.cuf('cufinder', 'US')
+        
+        result = client.ntp('apple')
         print(result)
         ```
     </CodeGroup>
 </div>
 <div className="mt-12">
-    ## Company Name to Domain API Go SDK
+    ## Company Phone Finder API Go SDK
     <CodeGroup>
         ```go Request
        package main
@@ -60,6 +60,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
         import (
             "fmt"
             "log"
+            
             "github.com/cufinder/cufinder-go"
         )
 
@@ -75,8 +76,8 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
                 MaxRetries: 3,
             })
         }
-
-        result, err := sdk.CUF("cufinder", "US")
+        
+        result, err := sdk.NTP("apple")
         if err != nil {
             log.Fatal(err)
         }
@@ -86,7 +87,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Ruby SDK
+    ## Company Phone Finder API Ruby SDK
     <CodeGroup>
         ```ruby Request
         require 'cufinder_ruby'
@@ -100,15 +101,15 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             timeout: 60,
             max_retries: 3
         )
-
-        result = client.cuf(company_name: 'cufinder', country_code: 'US')
+        
+        result = client.ntp(company_name: 'apple')
         puts result
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Rust SDK
+    ## Company Phone Finder API Rust SDK
     <CodeGroup>
         ```rust Request
         use cufinder_rust::CufinderSDK;
@@ -128,15 +129,15 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             
             Ok(())
         }
-
-        let result = sdk.cuf("cufinder", "US").await?;
+        
+        let result = sdk.ntp("apple").await?;
         println!("{:?}", result);
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-20">
-  <ReadMore link="https://cufinder.io/apis/company-name-to-domain-api">
-    Company Name to Domain API
+  <ReadMore link="https://cufinder.io/apis/company-phone-finder-api">
+    Company Phone Finder API
   </ReadMore>
 </div>

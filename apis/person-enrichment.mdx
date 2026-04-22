@@ -17,7 +17,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 <StatusCodes className="mt-20" />
 
 <div className="mt-20">
-    ## Company Name to Domain API Typescript SDK
+    ## Person Enrichment API Typescript SDK
     <CodeGroup>
         ```typescript Request
         import { Cufinder } from '@cufinder/cufinder-ts';
@@ -28,17 +28,17 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
         // Initialize with more options
         const client = new Cufinder('your-api-key-here', { timeout: 60000 });
 
-        const result = await client.cuf('cufinder', 'US');
-        console.log(result)
+        const result = await client.tep('iain mckenzie', 'stripe');
+        console.log(result);
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Python SDK
+    ## Person Enrichment API Python SDK
     <CodeGroup>
         ```python Request
-        from cufinder import Cufinder
+         from cufinder import Cufinder
 
         # Initialize the client
         client = Cufinder('your-api-key-here')
@@ -46,20 +46,21 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
         # Initialize with more options
         client = Cufinder('your-api-key-here', timeout=60)
 
-        result = client.cuf('cufinder', 'US')
+        result = client.tep('iain mckenzie', 'stripe')
         print(result)
         ```
     </CodeGroup>
 </div>
 <div className="mt-12">
-    ## Company Name to Domain API Go SDK
+    ## Person Enrichment API Go SDK
     <CodeGroup>
         ```go Request
-       package main
+        package main
 
         import (
             "fmt"
             "log"
+            
             "github.com/cufinder/cufinder-go"
         )
 
@@ -76,7 +77,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             })
         }
 
-        result, err := sdk.CUF("cufinder", "US")
+        result, err := sdk.TEP("iain mckenzie", "stripe")
         if err != nil {
             log.Fatal(err)
         }
@@ -86,7 +87,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Ruby SDK
+    ## Person Enrichment API Ruby SDK
     <CodeGroup>
         ```ruby Request
         require 'cufinder_ruby'
@@ -101,14 +102,14 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             max_retries: 3
         )
 
-        result = client.cuf(company_name: 'cufinder', country_code: 'US')
+        result = client.tep(full_name: 'iain mckenzie', company: 'stripe')
         puts result
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Rust SDK
+    ## Person Enrichment API Rust SDK
     <CodeGroup>
         ```rust Request
         use cufinder_rust::CufinderSDK;
@@ -128,15 +129,15 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             
             Ok(())
         }
-
-        let result = sdk.cuf("cufinder", "US").await?;
+        
+        let result = sdk.tep("iain mckenzie", "stripe").await?;
         println!("{:?}", result);
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-20">
-  <ReadMore link="https://cufinder.io/apis/company-name-to-domain-api">
-    Company Name to Domain API
+  <ReadMore link="https://cufinder.io/apis/person-enrichment-api">
+    Person Enrichment API
   </ReadMore>
 </div>

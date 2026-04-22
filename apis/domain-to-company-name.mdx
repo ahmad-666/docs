@@ -17,7 +17,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 <StatusCodes className="mt-20" />
 
 <div className="mt-20">
-    ## Company Name to Domain API Typescript SDK
+    ## Domain to Company Name API Typescript SDK
     <CodeGroup>
         ```typescript Request
         import { Cufinder } from '@cufinder/cufinder-ts';
@@ -28,14 +28,14 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
         // Initialize with more options
         const client = new Cufinder('your-api-key-here', { timeout: 60000 });
 
-        const result = await client.cuf('cufinder', 'US');
-        console.log(result)
+        const result = await client.dtc('cufinder.io');
+        console.log(result);
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Python SDK
+    ## Domain to Company Name API Python SDK
     <CodeGroup>
         ```python Request
         from cufinder import Cufinder
@@ -45,21 +45,22 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 
         # Initialize with more options
         client = Cufinder('your-api-key-here', timeout=60)
-
-        result = client.cuf('cufinder', 'US')
+        
+        result = client.dtc('cufinder.io')
         print(result)
         ```
     </CodeGroup>
 </div>
 <div className="mt-12">
-    ## Company Name to Domain API Go SDK
+    ## Domain to Company Name API Go SDK
     <CodeGroup>
         ```go Request
-       package main
+        package main
 
         import (
             "fmt"
             "log"
+            
             "github.com/cufinder/cufinder-go"
         )
 
@@ -75,8 +76,8 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
                 MaxRetries: 3,
             })
         }
-
-        result, err := sdk.CUF("cufinder", "US")
+        
+        result, err := sdk.DTC("cufinder.io")
         if err != nil {
             log.Fatal(err)
         }
@@ -86,7 +87,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Ruby SDK
+    ## Domain to Company Name API Ruby SDK
     <CodeGroup>
         ```ruby Request
         require 'cufinder_ruby'
@@ -101,14 +102,14 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             max_retries: 3
         )
 
-        result = client.cuf(company_name: 'cufinder', country_code: 'US')
+        result = client.dtc(company_website: 'cufinder.io')
         puts result
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Rust SDK
+    ## Domain to Company Name API Rust SDK
     <CodeGroup>
         ```rust Request
         use cufinder_rust::CufinderSDK;
@@ -128,15 +129,15 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             
             Ok(())
         }
-
-        let result = sdk.cuf("cufinder", "US").await?;
+        
+        let result = sdk.dtc("cufinder.io").await?;
         println!("{:?}", result);
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-20">
-  <ReadMore link="https://cufinder.io/apis/company-name-to-domain-api">
-    Company Name to Domain API
+  <ReadMore link="https://cufinder.io/apis/domain-to-company-name-api">
+    Domain to Company Name API
   </ReadMore>
 </div>

@@ -17,7 +17,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 <StatusCodes className="mt-20" />
 
 <div className="mt-20">
-    ## Company Name to Domain API Typescript SDK
+    ## Company Career Page Finder API Typescript SDK
     <CodeGroup>
         ```typescript Request
         import { Cufinder } from '@cufinder/cufinder-ts';
@@ -28,38 +28,39 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
         // Initialize with more options
         const client = new Cufinder('your-api-key-here', { timeout: 60000 });
 
-        const result = await client.cuf('cufinder', 'US');
-        console.log(result)
+        const result = await client.ccp('stripe.com');
+  console.log(result);
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Python SDK
+    ## Company Career Page Finder API Python SDK
     <CodeGroup>
         ```python Request
-        from cufinder import Cufinder
+         from cufinder import Cufinder
 
         # Initialize the client
         client = Cufinder('your-api-key-here')
 
         # Initialize with more options
         client = Cufinder('your-api-key-here', timeout=60)
-
-        result = client.cuf('cufinder', 'US')
+        
+        result = client.ccp('stripe.com')
         print(result)
         ```
     </CodeGroup>
 </div>
 <div className="mt-12">
-    ## Company Name to Domain API Go SDK
+    ## Company Career Page Finder API Go SDK
     <CodeGroup>
         ```go Request
-       package main
+        package main
 
         import (
             "fmt"
             "log"
+            
             "github.com/cufinder/cufinder-go"
         )
 
@@ -75,8 +76,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
                 MaxRetries: 3,
             })
         }
-
-        result, err := sdk.CUF("cufinder", "US")
+        result, err := sdk.CCP("stripe.com")
         if err != nil {
             log.Fatal(err)
         }
@@ -86,10 +86,10 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Ruby SDK
+    ## Company Career Page Finder API Ruby SDK
     <CodeGroup>
         ```ruby Request
-        require 'cufinder_ruby'
+         require 'cufinder_ruby'
 
         # Initialize the client
         client = Cufinder::Client.new(api_key: 'your-api-key-here')
@@ -100,18 +100,18 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             timeout: 60,
             max_retries: 3
         )
-
-        result = client.cuf(company_name: 'cufinder', country_code: 'US')
+        
+        result = client.ccp(url: "stripe.com")
         puts result
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Rust SDK
+    ## Company Career Page Finder API Rust SDK
     <CodeGroup>
         ```rust Request
-        use cufinder_rust::CufinderSDK;
+         use cufinder_rust::CufinderSDK;
 
         #[tokio::main]
         async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -129,14 +129,14 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             Ok(())
         }
 
-        let result = sdk.cuf("cufinder", "US").await?;
+        let result = sdk.ccp("stripe.com").await?;
         println!("{:?}", result);
         ```
     </CodeGroup>
 </div>
 
-<div className="mt-20">
-  <ReadMore link="https://cufinder.io/apis/company-name-to-domain-api">
-    Company Name to Domain API
+{/* <div className="mt-20">
+  <ReadMore link="">
+    Company Career Page Finder API
   </ReadMore>
-</div>
+</div> */}

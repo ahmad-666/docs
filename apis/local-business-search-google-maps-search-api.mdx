@@ -17,7 +17,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 <StatusCodes className="mt-20" />
 
 <div className="mt-20">
-    ## Company Name to Domain API Typescript SDK
+    ## Local Business Search API Typescript SDK
     <CodeGroup>
         ```typescript Request
         import { Cufinder } from '@cufinder/cufinder-ts';
@@ -28,17 +28,21 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
         // Initialize with more options
         const client = new Cufinder('your-api-key-here', { timeout: 60000 });
 
-        const result = await client.cuf('cufinder', 'US');
-        console.log(result)
+        const result = await client.lbs({
+            country: 'united states',
+            state: 'california',
+            page: 1
+        });
+        console.log(result);
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Python SDK
+    ## Local Business Search API Python SDK
     <CodeGroup>
         ```python Request
-        from cufinder import Cufinder
+         from cufinder import Cufinder
 
         # Initialize the client
         client = Cufinder('your-api-key-here')
@@ -46,20 +50,25 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
         # Initialize with more options
         client = Cufinder('your-api-key-here', timeout=60)
 
-        result = client.cuf('cufinder', 'US')
+        result = client.lbs(
+            country='united states',
+            state='california',
+            page=1
+        )
         print(result)
         ```
     </CodeGroup>
 </div>
 <div className="mt-12">
-    ## Company Name to Domain API Go SDK
+    ## Local Business Search API Go SDK
     <CodeGroup>
         ```go Request
-       package main
+        package main
 
         import (
             "fmt"
             "log"
+            
             "github.com/cufinder/cufinder-go"
         )
 
@@ -75,8 +84,12 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
                 MaxRetries: 3,
             })
         }
-
-        result, err := sdk.CUF("cufinder", "US")
+        
+        result, err := sdk.LBS(cufinder.LbsParams{
+            Country: "united states",
+            State:   "california",
+            Page:    1,
+        })
         if err != nil {
             log.Fatal(err)
         }
@@ -86,7 +99,7 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Ruby SDK
+    ## Local Business Search API Ruby SDK
     <CodeGroup>
         ```ruby Request
         require 'cufinder_ruby'
@@ -101,14 +114,18 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             max_retries: 3
         )
 
-        result = client.cuf(company_name: 'cufinder', country_code: 'US')
+        result = client.lbs(
+            country: 'united states',
+            state: 'california',
+            page: 1
+        )
         puts result
         ```
     </CodeGroup>
 </div>
 
 <div className="mt-12">
-    ## Company Name to Domain API Rust SDK
+    ## Local Business Search API Rust SDK
     <CodeGroup>
         ```rust Request
         use cufinder_rust::CufinderSDK;
@@ -128,15 +145,22 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
             
             Ok(())
         }
+        
+        use cufinder_rust::LbsParams;
 
-        let result = sdk.cuf("cufinder", "US").await?;
+        let result = sdk.lbs(LbsParams {
+            country: Some("united states".to_string()),
+            state: Some("california".to_string()),
+            page: Some(1),
+            ..Default::default()
+        }).await?;
         println!("{:?}", result);
         ```
     </CodeGroup>
 </div>
 
-<div className="mt-20">
-  <ReadMore link="https://cufinder.io/apis/company-name-to-domain-api">
-    Company Name to Domain API
+{/* <div className="mt-20">
+  <ReadMore link="">
+    Local Business Search API
   </ReadMore>
-</div>
+</div> */}
