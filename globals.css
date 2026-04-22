@@ -4,7 +4,8 @@
 
 a {
   text-decoration: none;
-  border-bottom: none !important;
+  border-bottom-width: 0 !important ;
+  outline: none;
 }
 
 ul,
@@ -17,5 +18,9 @@ li::before {
 }
 
 span[data-as="p"] {
-  display: inline-block;
+  display: inline;
+}
+
+button {
+  outline: none;
 }

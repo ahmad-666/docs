@@ -1,4 +1,4 @@
-const StatusCodes = ({
+export const StatusCodes = ({
   showTitle = true,
   showDesc = false,
   className = "",
@@ -75,5 +75,3 @@ const StatusCodes = ({
     </div>
   );
 };
-
-export default StatusCodes;

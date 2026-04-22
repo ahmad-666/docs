@@ -1,4 +1,4 @@
-const SDKsList = ({ className = "" }) => {
+export const SDKsList = ({ className = "" }) => {
   const sdks = [
     {
       href: "https://github.com/CUFinder/cufinder-ts",
@@ -56,7 +56,7 @@ const SDKsList = ({ className = "" }) => {
               />
               <div>
                 <div>
-                  <p className="text-sm text-gray-800">{sdk.title}</p>
+                  <p className="text-sm text-gray-800 dark:text-gray-200">{sdk.title}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 leading-[1.2rem]">
@@ -71,5 +71,3 @@ const SDKsList = ({ className = "" }) => {
     </div>
   );
 };
-
-export default SDKsList;
