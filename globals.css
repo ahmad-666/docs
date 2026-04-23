@@ -24,3 +24,16 @@ span[data-as="p"] {
 button {
   outline: none;
 }
+
+.w-8xl {
+  width: 100rem;
+}
+.min-w-8xl {
+  min-width: 100rem;
+}
+.max-w-8xl {
+  max-width: 100rem;
+}
+#navbar + div {
+  max-width: 100rem;
+}
