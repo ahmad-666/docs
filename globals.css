@@ -25,6 +25,7 @@ button {
   outline: none;
 }
 
+/* for customize content container width */
 .w-8xl {
   width: 100rem;
 }
@@ -36,4 +37,9 @@ button {
 }
 #navbar + div {
   max-width: 100rem;
+}
+
+/* for customize logo in navbar  */
+img.nav-logo {
+  height: 2.5rem;
 }

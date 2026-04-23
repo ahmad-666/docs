@@ -7,7 +7,7 @@
     "light": "#07C983",
     "dark": "#15803D"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "icons": {
     "library": "tabler"
   },
@@ -78,20 +78,21 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "href": "/apis",
+    "light": "/images/logos/logo.png",
+    "dark": "/images/logos/logo-text-white.png"
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Contact Sales",
+        "href": "https://cufinder.io/contact-sales"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://dashboard.cufinder.io/auth/signin"
     }
   },
   "contextual": {
@@ -108,9 +109,19 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/cu_finder",
+      "github": "https://github.com/CUFinder",
+      "youtube": "https://www.youtube.com/@cufinderco",
+      "instagram": "https://www.instagram.com/cufinder.io",
+      "facebook": "https://www.facebook.com/cufinder",
+      "linkedin": "https://www.linkedin.com/company/cufinder"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/apis",
+      "permanent": true
+    }
+  ]
 }
