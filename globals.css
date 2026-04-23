@@ -39,6 +39,19 @@ button {
   max-width: 100rem;
 }
 
+/* for sidebar width */
+/* #sidebar {
+  width: 20rem !important;
+}
+#content-container {
+  padding-left: 2rem;
+}
+@media screen and (width < 1020px) {
+  #content-container {
+    padding-left: 0;
+  }
+} */
+
 /* for customize logo in navbar  */
 img.nav-logo {
   height: 2.5rem;

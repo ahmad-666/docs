@@ -12,70 +12,69 @@
     "library": "tabler"
   },
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Getting started",
-            "pages": ["index", "quickstart", "development"]
-          },
-          {
-            "group": "Customization",
-            "pages": ["essentials/settings", "essentials/navigation"]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
+        "group": "Getting started",
+        "pages": [
+          "/apis/quick-start",
+          "/apis/authentication",
+          "/apis/usage-limits",
+          "/apis",
+          "/apis/errors"
         ]
       },
       {
-        "tab": "API reference",
-        "groups": [
+        "group": "Documentations",
+        "pages": [
           {
-            "group": "API documentation",
-            "pages": ["api-reference/introduction"]
+            "group": "Company APIs",
+            "directory": "accordion",
+            "pages": [
+              "/apis/company-name-to-domain",
+              "/apis/company-linkedin-url-finder",
+              "/apis/domain-to-company-name",
+              "/apis/company-email-finder",
+              "/apis/company-phone-finder",
+              "/apis/company-lookalikes-finder",
+              "/apis/company-fundraising",
+              "/apis/company-revenue-finder",
+              "/apis/company-subsidiaries-finder",
+              "/apis/company-tech-stack-finder",
+              "/apis/company-enrichment",
+              "/apis/company-employee-count",
+              "/apis/company-locations",
+              "/apis/company-search",
+              "/apis/local-business-search-google-maps-search-api",
+              "/apis/b2b-customers-finder",
+              "/apis/company-career-page-finder",
+              "/apis/company-saas-checker",
+              "/apis/company-b2b-or-b2c-checker",
+              "/apis/company-mission-statement",
+              "/apis/company-snapshot"
+            ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Contact APIs",
+            "directory": "accordion",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "/apis/reverse-email-lookup",
+              "/apis/linkedin-profile-enrichment",
+              "/apis/linkedin-profile-email-finder",
+              "/apis/person-enrichment",
+              "/apis/person-search"
+            ]
+          },
+          {
+            "group": "General APIs",
+            "directory": "accordion",
+            "pages": [
+              "/apis/phone-number-normalizer",
+              "/apis/address-normalizer"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "href": "/apis",
