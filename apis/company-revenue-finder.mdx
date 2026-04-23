@@ -15,51 +15,98 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
                 <div className="flex justify-between flex-wrap gap-4 items-center">
                     <div className="flex items-center gap-2">
                         <Badge color="blue" shape="rounded" size="lg" className="uppercase">post</Badge>
-                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium"></p>
+                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium">https://api.cufinder.io/v2/car</p>
                     </div>
                 </div>
             </div>
-            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is per founded records.</Badge>
+            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is 3 per founded records.</Badge>
             <div>
                 ## Attributes
                 <ParamField header="x-api-key" type="string" required>
 					Your API key.	
                 </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
+				<ParamField body="query" type="string" required>
+                    Company name or Company domain or Company LinkedIn URL
                 </ParamField>
             </div>
         </div>
         <div className="col-span-12 lg:col-span-7">
             <CodeGroup dropdown>
                 ```bash Request
-                
+                curl --location 'https://api.cufinder.io/v2/car' \
+                --header 'Content-Type: application/x-www-form-urlencoded' \
+                --header 'x-api-key: api_key' \
+                --data-urlencode 'query=apple'
                 ```
 
                 ```javascript Request
-                
+                const myHeaders = new Headers();
+
+                myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+                myHeaders.append("x-api-key", "api_key");
+
+                const urlencoded = new URLSearchParams();
+                urlencoded.append("query", "apple");
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: urlencoded,
+                    redirect: "follow"
+                };
+
+                fetch("https://api.cufinder.io/v2/car", requestOptions)
+                .then((response) => response.text())
+                .then((result) => console.log(result))
+                .catch((error) => console.error(error));
                 ```
 
                 ```python Request
-                
+                import requests
+
+                url = "https://api.cufinder.io/v2/car"
+
+                payload = 'query=apple'
+                headers = {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'x-api-key': 'api_key'
+                }
+
+                response = requests.request("POST", url, headers=headers, data=payload)
+
+                print(response.text)
                 ```
 
                 ```php Request
-                
+                $client = new Client();
+
+                $headers = [
+                    'Content-Type' => 'application/x-www-form-urlencoded',
+                    'x-api-key' => 'api_key'
+                ];
+
+                $options = [
+                'form_params' => [
+                    'query' => 'apple'
+                ]];
+
+                $request = new Request('POST', 'https://api.cufinder.io/v2/car', $headers);
+                $res = $client->sendAsync($request, $options)->wait();
+
+                echo $res->getBody();
                 ```
             </CodeGroup>
             <CodeGroup>
                 ```json Response
-                
+                {
+                    "status": 1,
+                    "data": {
+                        "confidence_level": 96,
+                        "query": "apple",
+                        "annual_revenue": "$383.3B",
+                        "credit_count": 9816
+                    }
+                }
                 ```
             </CodeGroup>
         </div>

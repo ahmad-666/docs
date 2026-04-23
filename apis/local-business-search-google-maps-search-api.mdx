@@ -15,51 +15,499 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
                 <div className="flex justify-between flex-wrap gap-4 items-center">
                     <div className="flex items-center gap-2">
                         <Badge color="blue" shape="rounded" size="lg" className="uppercase">post</Badge>
-                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium"></p>
+                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium">https://api.cufinder.io/v2/lbs</p>
                     </div>
                 </div>
             </div>
-            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is per founded records.</Badge>
+            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is 5 per founded records.</Badge>
             <div>
                 ## Attributes
                 <ParamField header="x-api-key" type="string" required>
-					Your API key.	
+                    Your API key.
                 </ParamField>
-				<ParamField body="" type="string" required>
-                    
+                <ParamField body="name" type="string(contains, e.g. '%john doe%')" required>
+                    Local business name
                 </ParamField>
-				<ParamField body="" type="string" required>
-                    
+                <ParamField body="country" type="string" required>
+                    Local business country
                 </ParamField>
-				<ParamField body="" type="string" required>
-                    
+                <ParamField body="state" type="string">
+                    Local business state
                 </ParamField>
-				<ParamField body="" type="string" required>
-                    
+                <ParamField body="city" type="string">
+                    Local business city
+                </ParamField>
+                <ParamField body="industry" type="string">
+                    Local business industry
+                </ParamField>
+                <ParamField body="page" type="integer">
+                    Page filter
                 </ParamField>
             </div>
         </div>
         <div className="col-span-12 lg:col-span-7">
             <CodeGroup dropdown>
                 ```bash Request
-                
+                 curl --location 'https://api.cufinder.io/v2/lbs' \
+                --header 'Content-Type: application/json' \
+                --header 'x-api-key: api_key' \
+                --data '{
+                    "name": "sens",
+                    "country": "united states",
+                    "state": "california",
+                    "page": 1
+                }'
+
                 ```
 
                 ```javascript Request
-                
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                myHeaders.append("x-api-key", "api_key");
+
+                const raw = JSON.stringify({
+                    "name": "sens",
+                    "country": "united states",
+                    "state": "california",
+                    "page": 1
+                });
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: "follow"
+                };
+
+                fetch("https://api.cufinder.io/v2/lbs", requestOptions)
+                .then((response) => response.text())
+                .then((result) => console.log(result))
+                .catch((error) => console.error(error));
+
                 ```
 
                 ```python Request
-                
+                import requests
+                import json
+
+                url = "https://api.cufinder.io/v2/lbs"
+
+                payload = json.dumps({
+                    "name": "sens",
+                    "country": "united states",
+                    "state": "california",
+                    "page": 1
+                })
+                headers = {
+                    'Content-Type': 'application/json',
+                    'x-api-key': 'api_key'
+                }
+
+                response = requests.request("POST", url, headers=headers, data=payload)
+
+                print(response.text)
+
+
                 ```
 
                 ```php Request
-                
+                $client = new Client();
+                $headers = [
+                    'Content-Type' => 'application/json',
+                    'x-api-key' => 'api_key'
+                ];
+                $body = '{
+                    "name": "sens",
+                    "country": "united states",
+                    "state": "california",
+                    "page": 1
+                }';
+                $request = new Request('POST', 'https://api.cufinder.io/v2/lbs', $headers, $body);
+                $res = $client->sendAsync($request)->wait();
+                echo $res->getBody();
+
                 ```
             </CodeGroup>
             <CodeGroup>
                 ```json Response
-                
+                  {
+                    "status": 1,
+                    "data": {
+                        "confidence_level": 95,
+                        "query": {
+                            "country": "united states",
+                            "state": "california",
+                            "page": 1
+                        },
+                        "companies": [
+                            {
+                                "name": "Party Popper Balloons",
+                                "website": null,
+                                "industry": "balloon artist",
+                                "industry_details": {
+                                    "level_1": "Entertainer",
+                                    "level_2": "Entertainment and Recreation",
+                                    "naics_code": "711510",
+                                    "sic_code": "7929"
+                                },
+                                "main_location": {
+                                    "country": "united states",
+                                    "state": "california",
+                                    "city": "acalanes ridge",
+                                    "address": null
+                                },
+                                "geo_location": {
+                                    "google_maps_id": null,
+                                    "rating": null,
+                                    "reviews_count": null
+                                },
+                                "social": {
+                                    "linkedin": null,
+                                    "twitter": null,
+                                    "facebook": null,
+                                    "instagram": null,
+                                    "youtube": null
+                                },
+                                "connections": {
+                                    "phones": [
+                                        "(415) 610-4787"
+                                    ],
+                                    "emails": [],
+                                    "phone_type": "FIXED_LINE_OR_MOBILE"
+                                }
+                            },
+                            {
+                                "name": "Easy Bookkeeping 123",
+                                "website": "https://www.easybookkeeping123.com/",
+                                "industry": "bookkeeping service",
+                                "industry_details": {
+                                    "level_1": "Bookkeeping Service",
+                                    "level_2": "Financial and Legal Services",
+                                    "naics_code": "541213",
+                                    "sic_code": "8721"
+                                },
+                                "main_location": {
+                                    "country": "united states",
+                                    "state": "california",
+                                    "city": "acalanes ridge",
+                                    "address": null
+                                },
+                                "geo_location": {
+                                    "google_maps_id": null,
+                                    "rating": null,
+                                    "reviews_count": null
+                                },
+                                "social": {
+                                    "linkedin": "linkedin.com/company/123-bookkeeping",
+                                    "twitter": null,
+                                    "facebook": null,
+                                    "instagram": null,
+                                    "youtube": null
+                                },
+                                "connections": {
+                                    "phones": [
+                                        "(415) 570-8568"
+                                    ],
+                                    "emails": [
+                                        "info@easybookkeeping123.com"
+                                    ],
+                                    "phone_type": "FIXED_LINE_OR_MOBILE"
+                                }
+                            },
+                            {
+                                "name": "All People Electric",
+                                "website": null,
+                                "industry": "electrician",
+                                "industry_details": {
+                                    "level_1": "Electrician",
+                                    "level_2": "Construction and Home Improvement",
+                                    "naics_code": "238210",
+                                    "sic_code": "1731"
+                                },
+                                "main_location": {
+                                    "country": "united states",
+                                    "state": "california",
+                                    "city": "acalanes ridge",
+                                    "address": null
+                                },
+                                "geo_location": {
+                                    "google_maps_id": "ChIJMQl5OZ5ZhYARWe0rbOoE0EQ",
+                                    "rating": 4.7,
+                                    "reviews_count": 12
+                                },
+                                "social": {
+                                    "linkedin": null,
+                                    "twitter": null,
+                                    "facebook": null,
+                                    "instagram": null,
+                                    "youtube": null
+                                },
+                                "connections": {
+                                    "phones": [
+                                        "(925) 477-1877"
+                                    ],
+                                    "emails": [],
+                                    "phone_type": "FIXED_LINE_OR_MOBILE"
+                                }
+                            },
+                            {
+                                "name": "Kerex Engineering Inc.",
+                                "website": "http://kerexengineering.com/",
+                                "industry": "engineer",
+                                "industry_details": {
+                                    "level_1": "Engineering",
+                                    "level_2": "Industrial and Manufacturing",
+                                    "naics_code": "541330",
+                                    "sic_code": "8711"
+                                },
+                                "main_location": {
+                                    "country": "united states",
+                                    "state": "california",
+                                    "city": "acalanes ridge",
+                                    "address": null
+                                },
+                                "geo_location": {
+                                    "google_maps_id": null,
+                                    "rating": null,
+                                    "reviews_count": null
+                                },
+                                "social": {
+                                    "linkedin": null,
+                                    "twitter": null,
+                                    "facebook": null,
+                                    "instagram": null,
+                                    "youtube": null
+                                },
+                                "connections": {
+                                    "phones": [],
+                                    "emails": [
+                                        "patrick@kerexengineering.com"
+                                    ],
+                                    "phone_type": null
+                                }
+                            },
+                            {
+                                "name": "Delta Renovation",
+                                "website": "http://www.delta-renovation.com/",
+                                "industry": "kitchen remodels",
+                                "industry_details": {
+                                    "level_1": "Kitchen Remodeler",
+                                    "level_2": "Construction and Home Improvement",
+                                    "naics_code": "236118",
+                                    "sic_code": "1521"
+                                },
+                                "main_location": {
+                                    "country": "united states",
+                                    "state": "california",
+                                    "city": "acalanes ridge",
+                                    "address": null
+                                },
+                                "geo_location": {
+                                    "google_maps_id": null,
+                                    "rating": null,
+                                    "reviews_count": null
+                                },
+                                "social": {
+                                    "linkedin": null,
+                                    "twitter": null,
+                                    "facebook": null,
+                                    "instagram": null,
+                                    "youtube": null
+                                },
+                                "connections": {
+                                    "phones": [
+                                        "(925) 239-0055"
+                                    ],
+                                    "emails": [
+                                        "info@delta-renovation.com"
+                                    ],
+                                    "phone_type": "FIXED_LINE_OR_MOBILE"
+                                }
+                            },
+                            {
+                                "name": "Prospera Mental Health & Wellness",
+                                "website": "http://prosperamhw.com/",
+                                "industry": "mental health service",
+                                "industry_details": {
+                                    "level_1": "Mental health clinic",
+                                    "level_2": "Health and Medical Services",
+                                    "naics_code": "621330",
+                                    "sic_code": "8063"
+                                },
+                                "main_location": {
+                                    "country": "united states",
+                                    "state": "california",
+                                    "city": "acalanes ridge",
+                                    "address": null
+                                },
+                                "geo_location": {
+                                    "google_maps_id": "ChIJlROjcreBhYARo3QkWH9bPa8",
+                                    "rating": 5,
+                                    "reviews_count": 27
+                                },
+                                "social": {
+                                    "linkedin": null,
+                                    "twitter": null,
+                                    "facebook": null,
+                                    "instagram": null,
+                                    "youtube": null
+                                },
+                                "connections": {
+                                    "phones": [
+                                        "(415) 684-8146"
+                                    ],
+                                    "emails": [
+                                        "andrea@prosperamhw.com"
+                                    ],
+                                    "phone_type": "FIXED_LINE_OR_MOBILE"
+                                }
+                            },
+                            {
+                                "name": "Briones Peak",
+                                "website": null,
+                                "industry": "mountain peak",
+                                "industry_details": {
+                                    "level_1": "Landmark",
+                                    "level_2": "Real Estate and Property Management",
+                                    "naics_code": "713990",
+                                    "sic_code": "7999"
+                                },
+                                "main_location": {
+                                    "country": "united states",
+                                    "state": "california",
+                                    "city": "acalanes ridge",
+                                    "address": "California 94553"
+                                },
+                                "geo_location": {
+                                    "google_maps_id": null,
+                                    "rating": null,
+                                    "reviews_count": null
+                                },
+                                "social": {
+                                    "linkedin": null,
+                                    "twitter": null,
+                                    "facebook": null,
+                                    "instagram": null,
+                                    "youtube": null
+                                },
+                                "connections": {
+                                    "phones": [],
+                                    "emails": [],
+                                    "phone_type": null
+                                }
+                            },
+                            {
+                                "name": "Jackson PR Enterprises",
+                                "website": "https://www.jacksonprenterprises.net/",
+                                "industry": "notary public",
+                                "industry_details": {
+                                    "level_1": "Notary Public",
+                                    "level_2": "Financial and Legal Services",
+                                    "naics_code": "541120",
+                                    "sic_code": "6541"
+                                },
+                                "main_location": {
+                                    "country": "united states",
+                                    "state": "california",
+                                    "city": "acalanes ridge",
+                                    "address": null
+                                },
+                                "geo_location": {
+                                    "google_maps_id": null,
+                                    "rating": null,
+                                    "reviews_count": null
+                                },
+                                "social": {
+                                    "linkedin": null,
+                                    "twitter": null,
+                                    "facebook": null,
+                                    "instagram": null,
+                                    "youtube": null
+                                },
+                                "connections": {
+                                    "phones": [
+                                        "(707) 208-5388"
+                                    ],
+                                    "emails": [],
+                                    "phone_type": "FIXED_LINE_OR_MOBILE"
+                                }
+                            },
+                            {
+                                "name": "All American Paints",
+                                "website": null,
+                                "industry": "painter",
+                                "industry_details": {
+                                    "level_1": "Painter",
+                                    "level_2": "Arts and Crafts",
+                                    "naics_code": "238320",
+                                    "sic_code": "1721"
+                                },
+                                "main_location": {
+                                    "country": "united states",
+                                    "state": "california",
+                                    "city": "acalanes ridge",
+                                    "address": null
+                                },
+                                "geo_location": {
+                                    "google_maps_id": null,
+                                    "rating": null,
+                                    "reviews_count": null
+                                },
+                                "social": {
+                                    "linkedin": null,
+                                    "twitter": null,
+                                    "facebook": null,
+                                    "instagram": null,
+                                    "youtube": null
+                                },
+                                "connections": {
+                                    "phones": [
+                                        "(925) 705-1695"
+                                    ],
+                                    "emails": [],
+                                    "phone_type": "FIXED_LINE_OR_MOBILE"
+                                }
+                            },
+                            {
+                                "name": "Lamorinda Gopher, LLC",
+                                "website": "http://lamorindagopher.com/",
+                                "industry": "pest control service",
+                                "industry_details": {
+                                    "level_1": "Pest Control Service",
+                                    "level_2": "Agricultural and Environmental Services",
+                                    "naics_code": "561710",
+                                    "sic_code": "7342"
+                                },
+                                "main_location": {
+                                    "country": "united states",
+                                    "state": "california",
+                                    "city": "acalanes ridge",
+                                    "address": null
+                                },
+                                "geo_location": {
+                                    "google_maps_id": "ChIJe5DtBcF9hYARQNoeUoOJskc",
+                                    "rating": 5,
+                                    "reviews_count": 6
+                                },
+                                "social": {
+                                    "linkedin": null,
+                                    "twitter": null,
+                                    "facebook": null,
+                                    "instagram": null,
+                                    "youtube": null
+                                },
+                                "connections": {
+                                    "phones": [
+                                        "(925) 257-0023"
+                                    ],
+                                    "emails": [],
+                                    "phone_type": "FIXED_LINE_OR_MOBILE"
+                                }
+                            }
+                        ],
+                        "credit_count": 9978
+                    }
+                }
                 ```
             </CodeGroup>
         </div>

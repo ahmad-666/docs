@@ -15,51 +15,103 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
                 <div className="flex justify-between flex-wrap gap-4 items-center">
                     <div className="flex items-center gap-2">
                         <Badge color="blue" shape="rounded" size="lg" className="uppercase">post</Badge>
-                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium"></p>
+                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium">https://api.cufinder.io/v2/elf</p>
                     </div>
                 </div>
             </div>
-            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is per founded records.</Badge>
+            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is 4 per founded records.</Badge>
             <div>
                 ## Attributes
                 <ParamField header="x-api-key" type="string" required>
 					Your API key.	
                 </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
+				<ParamField body="query" type="string" required>
+                    Company name or Company domain or Company LinkedIn URL
                 </ParamField>
             </div>
         </div>
         <div className="col-span-12 lg:col-span-7">
             <CodeGroup dropdown>
                 ```bash Request
-                
+                curl --location 'https://api.cufinder.io/v2/elf' \
+                --header 'Content-Type: application/x-www-form-urlencoded' \
+                --header 'x-api-key: api_key' \
+                --data-urlencode 'query=cufinder'
                 ```
 
                 ```javascript Request
-                
+                const myHeaders = new Headers();
+
+                myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+                myHeaders.append("x-api-key", "api_key");
+
+                const urlencoded = new URLSearchParams();
+                urlencoded.append("query", "cufinder");
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: urlencoded,
+                    redirect: "follow"
+                };
+
+                fetch("https://api.cufinder.io/v2/elf", requestOptions)
+                .then((response) => response.text())
+                .then((result) => console.log(result))
+                .catch((error) => console.error(error));
                 ```
 
                 ```python Request
-                
+                import requests
+
+                url = "https://api.cufinder.io/v2/elf"
+
+                payload = 'query=cufinder'
+                headers = {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'x-api-key': 'api_key'
+                }
+
+                response = requests.request("POST", url, headers=headers, data=payload)
+
+                print(response.text)
                 ```
 
                 ```php Request
-                
+                $client = new Client();
+
+                $headers = [
+                    'Content-Type' => 'application/x-www-form-urlencoded',
+                    'x-api-key' => 'api_key'
+                ];
+
+                $options = [
+                    'form_params' => [
+                    'query' => 'cufinder'
+                ]];
+
+                $request = new Request('POST', 'https://api.cufinder.io/v2/elf', $headers);
+                $res = $client->sendAsync($request, $options)->wait();
+
+                echo $res->getBody();
                 ```
             </CodeGroup>
             <CodeGroup>
                 ```json Response
-                
+                {
+                    "status": 1,
+                    "data": {
+                        "confidence_level": 97,
+                        "query": "cufinder",
+                        "fundraising_info": {
+                            "funding_last_round_type": "series a",
+                            "funding_ammount_currency_code": "USD",
+                            "funding_money_raised": "us$ 5m",
+                            "funding_last_round_investors_url": "https://www.crunchbase.com/funding_round/cu-finder-series-a--ffbafce2"
+                        },
+                        "credit_count": 9909
+                    }
+                }
                 ```
             </CodeGroup>
         </div>

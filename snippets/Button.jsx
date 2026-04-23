@@ -10,7 +10,7 @@ export const Button = ({
 }) => {
   const isLink = !!href;
   const variantClassname = {
-    fill: "border-none mint-bg-[var(--color)] !text-white hover:mint-bg-[var(--color-dark)]",
+    fill: "border-none mint-bg-[var(--color)] !mint-text-white hover:mint-bg-[var(--color-dark)]",
     outline:
       "border !mint-border-b border-solid mint-border-[var(--color)] !mint-text-[var(--color)] mint-bg-[var(--color-lightest)] hover:mint-bg-[var(--color-lighter)]",
     text: "border-none bg-transparent !mint-text-[var(--color)] hover:mint-bg-[var(--color-lighter)]",
@@ -21,7 +21,10 @@ export const Button = ({
     lg: "px-8 py-2.5 rounded-xl text-lg",
   };
   const colors = {
-    primary: "rgb(22,163,74)",
+    primary: "rgb(22 163 74)",
+    info: "rgb(43 127 255)",
+    warning: "rgb(254 154 0)",
+    error: "rgb(251 44 54)",
   };
   const Comp = isLink ? "a" : "button";
 

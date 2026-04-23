@@ -15,51 +15,279 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
                 <div className="flex justify-between flex-wrap gap-4 items-center">
                     <div className="flex items-center gap-2">
                         <Badge color="blue" shape="rounded" size="lg" className="uppercase">post</Badge>
-                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium"></p>
+                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium">https://api.cufinder.io/v2/fcl</p>
                     </div>
                 </div>
             </div>
-            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is per founded records.</Badge>
+            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is 5 per founded records.</Badge>
             <div>
                 ## Attributes
                 <ParamField header="x-api-key" type="string" required>
 					Your API key.	
                 </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
+				<ParamField body="query" type="string" required>
+                    Company name or Company domain or Company LinkedIn URL
                 </ParamField>
             </div>
         </div>
         <div className="col-span-12 lg:col-span-7">
             <CodeGroup dropdown>
                 ```bash Request
-                
+                curl --location 'https://api.cufinder.io/v2/fcl' \
+                --header 'Content-Type: application/x-www-form-urlencoded' \
+                --header 'x-api-key: api_key' \
+                --data-urlencode 'query=apple'
                 ```
 
                 ```javascript Request
-                
+                const myHeaders = new Headers();
+
+                myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+                myHeaders.append("x-api-key", "api_key");
+
+                const urlencoded = new URLSearchParams();
+                urlencoded.append("query", "apple");
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: urlencoded,
+                    redirect: "follow"
+                };
+
+                fetch("https://api.cufinder.io/v2/fcl", requestOptions)
+                .then((response) => response.text())
+                .then((result) => console.log(result))
+                .catch((error) => console.error(error));
                 ```
 
                 ```python Request
-                
+                import requests
+
+                url = "https://api.cufinder.io/v2/fcl"
+
+                payload = 'query=apple'
+                headers = {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'x-api-key': 'api_key'
+                }
+
+                response = requests.request("POST", url, headers=headers, data=payload)
+
+                print(response.text)
                 ```
 
                 ```php Request
-                
+                $client = new Client();
+
+                $headers = [
+                    'Content-Type' => 'application/x-www-form-urlencoded',
+                    'x-api-key' => 'api_key'
+                ];
+
+                $options = [
+                    'form_params' => [
+                    'query' => 'apple'
+                ]];
+
+                $request = new Request('POST', 'https://api.cufinder.io/v2/fcl', $headers);
+                $res = $client->sendAsync($request, $options)->wait();
+
+                echo $res->getBody();
                 ```
             </CodeGroup>
             <CodeGroup>
                 ```json Response
-                
+                {
+                    "status": 1,
+                    "data": {
+                        "confidence_level": 98,
+                        "query": "apple",
+                        "companies": [
+                            {
+                                "name": "amazon",
+                                "website": "amazon.com",
+                                "employee_count": 747435,
+                                "size": "10,001+",
+                                "industry": "software development",
+                                "description": "amazon is guided by four principles: customer obsession rather than competitor focus, passion for invention, commitment to operational excellence, and long-term thinking. we are driven by the excitement of building technologies, inventing products, and providing services that change lives. we embrace new ways of doing things, make decisions quickly, and are not afraid to fail. we have the scope and capabilities of a large company, and the spirit and heart of a small one.together, amazonians research and develop new technologies from amazon web services to alexa on behalf of our customers: shoppers, sellers, content creators, and developers around the world.our mission is to be earth's most customer-centric company. our actions, goals, projects, programs, and inventions begin and end with the customer top of mind.you'll also hear us say that at amazon, it's always "day 1." what do we mean? that our approach remains the same as it was on amazon's very first day - to make smart, fast decisions, stay nimble, invent, and focus on delighting our customers.",
+                                "linkedin_url": "linkedin.com/company/amazon",
+                                "type": "public company",
+                                "domain": "amazon.com",
+                                "country": "united states",
+                                "state": "washington",
+                                "city": "seattle",
+                                "address": "2127 7th ave.,seattle, wa 98109, us",
+                                "founded_year": null,
+                                "logo_url": "api.cufinder.io/logo/amazon.com",
+                                "followers_count": 31850999
+                            },
+                            {
+                                "name": "deloitte",
+                                "website": "http://www.deloitte.com",
+                                "employee_count": 486813,
+                                "size": "10,001+",
+                                "industry": "business consulting and services",
+                                "description": "deloitte drives progress. our firms around the world help clients become leaders wherever they choose to compete. deloitte invests in outstanding people of diverse talents and backgrounds and empowers them to achieve more than they could elsewhere. our work combines advice with action and integrity. we believe that when our clients and society are stronger, so are we. deloitte refers to one or more of deloitte touche tohmatsu limited (“dttl”), its global network of member firms, and their related entities. dttl (also referred to as “deloitte global”) and each of its member firms are legally separate and independent entities. dttl does not provide services to clients. please see www.deloitte.com/about to learn more.the content on this page contains general information only, and none of deloitte touche tohmatsu limited, its member firms, or their related entities (collectively the “deloitte network”) is, by means of this publication, rendering professional advice or services. before making any decision or taking any action that may affect your finances or your business, you should consult a qualified professional adviser. no entity in the deloitte network shall be responsible for any loss whatsoever sustained by any person who relies on content from this page.",
+                                "linkedin_url": "linkedin.com/company/deloitte",
+                                "type": "privately held",
+                                "domain": "deloitte.com",
+                                "country": null,
+                                "state": null,
+                                "city": null,
+                                "address": "worldwide,worldwide, oo",
+                                "founded_year": null,
+                                "logo_url": "api.cufinder.io/logo/deloitte.com",
+                                "followers_count": 19000000
+                            },
+                            {
+                                "name": "google",
+                                "website": "https://google.com",
+                                "employee_count": 290576,
+                                "size": "10,001+",
+                                "industry": "software development",
+                                "description": "a problem isn't truly solved until it's solved for all. googlers build products that help create opportunities for everyone, whether down the street or across the globe. bring your insight, imagination and a healthy disregard for the impossible. bring everything that makes you unique. together, we can build for everyone.check out our career opportunities at goo.gle/3dleokh",
+                                "linkedin_url": "linkedin.com/company/google",
+                                "type": "public company",
+                                "domain": "google.com",
+                                "country": "united states",
+                                "state": "california",
+                                "city": "mountain view",
+                                "address": "1600 amphitheatre parkway,mountain view, ca 94043, us",
+                                "founded_year": null,
+                                "logo_url": "api.cufinder.io/logo/google.com",
+                                "followers_count": 33886283
+                            },
+                            {
+                                "name": "ibm",
+                                "website": "http://www.ibm.com",
+                                "employee_count": 10000,
+                                "size": "10,001+",
+                                "industry": "it services and it consulting",
+                                "description": "at ibm, we do more than work. we create. we create as technologists, developers, and engineers. we create with our partners. we create with our competitors. if you're searching for ways to make the world work better through technology and infrastructure, software and consulting, then we want to work with you.we're here to help every creator turn their "what if" into what is. let's create something that will change everything.",
+                                "linkedin_url": "linkedin.com/company/ibm",
+                                "type": "public company",
+                                "domain": "ibm.com",
+                                "country": "united states",
+                                "state": "new york",
+                                "city": "armonk",
+                                "address": "international business machines corp.,new orchard road,armonk, new york, ny 10504, us",
+                                "founded_year": null,
+                                "logo_url": "api.cufinder.io/logo/ibm.com",
+                                "followers_count": 18000000
+                            },
+                            {
+                                "name": "meta",
+                                "website": "https://meta.com",
+                                "employee_count": 123062,
+                                "size": "10,001+",
+                                "industry": "software development",
+                                "description": "meta builds technologies that help people connect, find communities, and grow businesses. when facebook launched in 2004, it changed the way people connect. apps like messenger, instagram and whatsapp further empowered billions around the world. now, meta is moving beyond 2d screens toward immersive experiences like augmented and virtual reality to help build the next evolution in social technology.we want to give people the power to build community and bring the world closer together. to do that, we ask that you help create a safe and respectful online space. these community values encourage constructive conversations on this page:• start with an open mind. whether you agree or disagree, engage with empathy.• comments violating our community standards will be removed or hidden. so please treat everybody with respect. • keep it constructive. use your interactions here to learn about and grow your understanding of others.• our moderators are here to uphold these guidelines for the benefit of everyone, every day. • if you are seeking support for issues related to your facebook account, please reference our help center (https://www.facebook.com/help) or help community (https://www.facebook.com/help/community).for a full listing of our jobs, visit https://www.metacareers.com",
+                                "linkedin_url": "linkedin.com/company/meta",
+                                "type": "public company",
+                                "domain": "meta.com",
+                                "country": "united states",
+                                "state": "california",
+                                "city": "menlo park",
+                                "address": "1 hacker way,menlo park, ca 94025, us",
+                                "founded_year": null,
+                                "logo_url": "api.cufinder.io/logo/meta.com",
+                                "followers_count": 10530710
+                            },
+                            {
+                                "name": "microsoft",
+                                "website": "https://news.microsoft.com",
+                                "employee_count": 10000,
+                                "size": "10,001+",
+                                "industry": "software development",
+                                "description": "every company has a mission. what's ours? to empower every person and every organization to achieve more. we believe technology can and should be a force for good and that meaningful innovation contributes to a brighter world in the future and today. our culture doesn’t just encourage curiosity; it embraces it. each day we make progress together by showing up as our authentic selves. we show up with a learn-it-all mentality. we show up cheering on others, knowing their success doesn't diminish our own. we show up every day open to learning our own biases, changing our behavior, and inviting in differences. because impact matters. microsoft operates in 190 countries and is made up of approximately 228,000 passionate employees worldwide.",
+                                "linkedin_url": "linkedin.com/company/microsoft",
+                                "type": "public company",
+                                "domain": "microsoft.com",
+                                "country": "united states",
+                                "state": "washington",
+                                "city": "redmond",
+                                "address": "1 microsoft way,redmond, washington 98052, us",
+                                "founded_year": null,
+                                "logo_url": "api.cufinder.io/logo/microsoft.com",
+                                "followers_count": 26000000
+                            },
+                            {
+                                "name": "netflix",
+                                "website": "https://jobs.netflix.com?utm_campaign=lihomepage&utm_source=linkedin",
+                                "employee_count": 15553,
+                                "size": "10,001+",
+                                "industry": "entertainment providers",
+                                "description": "netflix is one of the world's leading entertainment services with 270 million paid memberships in over 190 countries enjoying tv series, films and games across a wide variety of genres and languages. members can play, pause and resume watching as much as they want, anytime, anywhere, and can change their plans at any time.",
+                                "linkedin_url": "linkedin.com/company/netflix",
+                                "type": "public company",
+                                "domain": "netflix.com",
+                                "country": "united states",
+                                "state": "california",
+                                "city": "los gatos",
+                                "address": "100 winchester circle,los gatos, ca, us",
+                                "founded_year": "1997",
+                                "logo_url": "api.cufinder.io/logo/netflix.com",
+                                "followers_count": 10548709
+                            },
+                            {
+                                "name": "samsung electronics",
+                                "website": "http://www.samsung.com",
+                                "employee_count": 136904,
+                                "size": "10,001+",
+                                "industry": "computers and electronics manufacturing",
+                                "description": "samsung electronics is a global leader in technology, opening new possibilities for people everywhere. through relentless innovation and discovery, we are transforming the worlds of tvs, smartphones, wearable devices, tablets, digital appliances, network systems, medical devices, semiconductors and led solutions. samsung is also leading in the internet of things space through, among others, our smart home and digital health initiatives. since being established in 1969, samsung electronics has grown into one of the world’s leading technology companies, and become recognized as one of the top 10 global brands. our network now extends across the world, and samsung takes great pride in the creativity and diversity of its talented people, who drive our growth.  to discover more, please visit our website at www.samsung.com and our official newsroom at news.samsung.com",
+                                "linkedin_url": "linkedin.com/company/samsung-electronics",
+                                "type": "public company",
+                                "domain": "samsung.com",
+                                "country": "south korea",
+                                "state": null,
+                                "city": null,
+                                "address": "129 samsung-ro,suwon-si, gyeonggi-do 443-742, kr",
+                                "founded_year": null,
+                                "logo_url": "api.cufinder.io/logo/samsung.com",
+                                "followers_count": 4506146
+                            },
+                            {
+                                "name": "spotify",
+                                "website": "http://www.lifeatspotify.com",
+                                "employee_count": 14784,
+                                "size": "5,001-10,000",
+                                "industry": "musicians",
+                                "description": "our mission is to unlock the potential of human creativity—by giving a million creative artists the opportunity to live off their art and billions of fans the opportunity to enjoy and be inspired by it. spotify transformed music listening forever when it launched in sweden in 2008. discover, manage and share over 70m tracks for free, or upgrade to spotify premium to access exclusive features including offline mode, improved sound quality, and an ad-free music listening experience. today, spotify is the most popular global audio streaming service with 365m users, including 165m subscribers across 178 markets. we are the largest driver of revenue to the music business today.",
+                                "linkedin_url": "linkedin.com/company/spotify",
+                                "type": "public company",
+                                "domain": "lifeatspotify.com",
+                                "country": "sweden",
+                                "state": "stockholm county",
+                                "city": "stockholm",
+                                "address": "regeringsgatan 19,stockholm, stockholm county, se",
+                                "founded_year": "2006",
+                                "logo_url": "api.cufinder.io/logo/lifeatspotify.com",
+                                "followers_count": 3928910
+                            },
+                            {
+                                "name": "tesla",
+                                "website": "https://tesla.com",
+                                "employee_count": 74481,
+                                "size": "10,001+",
+                                "industry": "motor vehicle manufacturing",
+                                "description": "tesla is accelerating the world’s transition to sustainable abundance. to achieve our mission, we're building a world powered by solar, enabled by battery storage and transported by electric vehicles. we’re committed to hiring and developing top talent from around the world for any given discipline. headquartered in texas, we operate six huge, vertically integrated factories across three continents. with over 100,000 employees, our teams take a first-principles approach to designing, building, selling and servicing our products in-house. our world-class teams operate with a non-conventional philosophy of inter-disciplinary collaboration. each member of the team is expected to challenge and to be challenged, to create, and to innovate. we’re tackling the world’s most difficult and important problems—and we wouldn’t succeed without our shared passion for making the world a better place.",
+                                "linkedin_url": "linkedin.com/company/tesla-motors",
+                                "type": "public company",
+                                "domain": "tesla.com",
+                                "country": "united states",
+                                "state": "texas",
+                                "city": "austin",
+                                "address": "13101 harold green rd,austin, texas 78725, us",
+                                "founded_year": "2003",
+                                "logo_url": "api.cufinder.io/logo/tesla.com",
+                                "followers_count": 12246000
+                            }
+                        ],
+                        "credit_count": 2
+                    }
+                }
                 ```
             </CodeGroup>
         </div>

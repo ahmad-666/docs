@@ -15,51 +15,117 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
                 <div className="flex justify-between flex-wrap gap-4 items-center">
                     <div className="flex items-center gap-2">
                         <Badge color="blue" shape="rounded" size="lg" className="uppercase">post</Badge>
-                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium"></p>
+                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium">https://api.cufinder.io/v2/enc</p>
                     </div>
                 </div>
             </div>
-            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is per founded records.</Badge>
+            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is 4 per founded records.</Badge>
             <div>
                 ## Attributes
                 <ParamField header="x-api-key" type="string" required>
 					Your API key.	
                 </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
+				<ParamField body="query" type="string" required>
+                    Company name or Company domain or Company LinkedIn URL
                 </ParamField>
             </div>
         </div>
         <div className="col-span-12 lg:col-span-7">
             <CodeGroup dropdown>
                 ```bash Request
-                
+                curl --location 'https://api.cufinder.io/v2/enc' \
+                --header 'Content-Type: application/x-www-form-urlencoded' \
+                --header 'x-api-key: api_key' \
+                --data-urlencode 'query=cufinder'
                 ```
 
                 ```javascript Request
-                
+                const myHeaders = new Headers();
+
+                myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+                myHeaders.append("x-api-key", "api_key");
+
+                const urlencoded = new URLSearchParams();
+                urlencoded.append("query", "cufinder");
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: urlencoded,
+                    redirect: "follow"
+                };
+
+                fetch("https://api.cufinder.io/v2/enc", requestOptions)
+                .then((response) => response.text())
+                .then((result) => console.log(result))
+                .catch((error) => console.error(error));
+
                 ```
 
                 ```python Request
-                
+              import requests
+
+                url = "https://api.cufinder.io/v2/enc"
+
+                payload = 'query=cufinder'
+                headers = {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'x-api-key': 'api_key'
+                }
+
+                response = requests.request("POST", url, headers=headers, data=payload)
+
+                print(response.text)
+  
                 ```
 
                 ```php Request
-                
+                $client = new Client();
+
+                $headers = [
+                    'Content-Type' => 'application/x-www-form-urlencoded',
+                    'x-api-key' => 'api_key'
+                ];
+
+                $options = [
+                    'form_params' => [
+                    'query' => 'cufinder'
+                ]];
+
+                $request = new Request('POST', 'https://api.cufinder.io/v2/enc', $headers);
+                $res = $client->sendAsync($request, $options)->wait();
+
+                echo $res->getBody();
                 ```
             </CodeGroup>
             <CodeGroup>
                 ```json Response
-                
+                {
+                    "status": 1,
+                    "data": {
+                        "confidence_level": 95,
+                        "query": "cufinder",
+                        "company": {
+                            "name": "cufinder",
+                            "website": "https://cufinder.io",
+                            "employee_count": 51,
+                            "size": "51-200",
+                            "industry": "software development",
+                            "description": "unleash the full potential of your b2b, b2c, and even local business with cufinder - the all-in-one platform powered by ai for lead generation and real-time data enrichment.\n\ncufinder equips you with a massive global database of over +262m companies and +419m contacts associated with +5k industries, boasting an impressive 98% data accuracy. its suite of powerful engines allows you to discover targeted leads, decision-makers, managers, and any info you can think of based on your specific needs!\n\nenrich your sales pipeline with 27 data enrichment services, user-friendly tools, and seamless crm integrations. manage your sales team effectively with built-in team management features, and leverage the convenience of chrome extension functionalities along with fair prices and customizable plans to fit any budget and empower your sales success across all business categories.",
+                            "linkedin_url": "linkedin.com/company/cufinder",
+                            "type": "privately held",
+                            "domain": "cufinder.io",
+                            "country": "germany",
+                            "state": "hamburg",
+                            "city": "hamburg",
+                            "address": "lentersweg 36,hamburg, 22339, de",
+                            "founded_year": "2020",
+                            "logo_url": "api.cufinder.io/logo/cufinder.io",
+                            "followers_count": 1000
+                        },
+                        "credit_count": 9921
+                    }
+                }
                 ```
             </CodeGroup>
         </div>

@@ -15,51 +15,101 @@ import { ReadMore } from "/snippets/ReadMore.jsx";
                 <div className="flex justify-between flex-wrap gap-4 items-center">
                     <div className="flex items-center gap-2">
                         <Badge color="blue" shape="rounded" size="lg" className="uppercase">post</Badge>
-                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium"></p>
+                        <p className="!my-0 ml-2 text-base text-gray-800 dark:text-white font-medium">https://api.cufinder.io/v2/cbc</p>
                     </div>
                 </div>
             </div>
-            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is per founded records.</Badge>
+            <Badge color="blue" size="lg" icon="star" className="mt-3">Credit usage is 3 per founded records.</Badge>
             <div>
                 ## Attributes
                 <ParamField header="x-api-key" type="string" required>
 					Your API key.	
                 </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
-                </ParamField>
-				<ParamField body="" type="string" required>
-                    
+				<ParamField body="url" type="string" required>
+                    Company URL
                 </ParamField>
             </div>
         </div>
         <div className="col-span-12 lg:col-span-7">
             <CodeGroup dropdown>
                 ```bash Request
-                
+                curl --location 'https://api.cufinder.io/v2/cbc' \
+                --header 'Content-Type: application/json' \
+                --header 'x-api-key: your-api-key-here' \
+                --data '{
+                    "url": "amazon.com"
+                }'
                 ```
 
                 ```javascript Request
-                
+                const myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                myHeaders.append("x-api-key", "your-api-key-here");
+
+                const raw = JSON.stringify({
+                 "url": "amazon.com"
+                });
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: "follow"
+                };
+
+                try {
+                    const response = await fetch("https://api.cufinder.io/v2/cbc", requestOptions);
+                    const result = await response.text();
+                    console.log(result)
+                    } catch (error) {
+                    console.error(error);
+                };
                 ```
 
                 ```python Request
-                
+                import requests
+                import json
+
+                url = "https://api.cufinder.io/v2/cbc"
+
+                payload = json.dumps({
+                    "url": "amazon.com"
+                })
+                headers = {
+                    'Content-Type': 'application/json',
+                    'x-api-key': 'your-api-key-here'
+                }
+
+                response = requests.request("POST", url, headers=headers, data=payload)
+
+                print(response.text)
                 ```
 
                 ```php Request
-                
+                $client = new Client();
+                $headers = [
+                    'Content-Type' => 'application/json',
+                    'x-api-key' => 'your-api-key-here'
+                ];
+                $body = '{
+                    "url": "amazon.com"
+                }';
+                $request = new Request('POST', 'https://api.cufinder.io/v2/cbc', $headers, $body);
+                $res = $client->sendAsync($request)->wait();
+                echo $res->getBody();
                 ```
             </CodeGroup>
             <CodeGroup>
                 ```json Response
-                
+                {
+                    "status": 1,
+                    "data": {
+                        "confidence_level": 99,
+                        "query": "amazon.com",
+                        "business_type": "B2C",
+                        "credit_count": 30
+                    }
+                }
                 ```
             </CodeGroup>
         </div>
